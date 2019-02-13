@@ -21,7 +21,7 @@ class LibraryTest < Minitest::Test
   def test_library_can_add_to_collection
     @dpl.add_to_collection(@fifth_season)
     assert_equal [@fifth_season], @dpl.books
-    @dpl.add_to_collection(@fifth_season)
+    @dpl.add_to_collection(@kingdoms)
     @dpl.add_to_collection(@mockingbird)
     assert_equal [@fifth_season, @kingdoms, @mockingbird],
                   @dpl.books
@@ -29,12 +29,16 @@ class LibraryTest < Minitest::Test
 
   def test_library_can_tell_if_it_has_book
     @dpl.add_to_collection(@fifth_season)
-    @dpl.add_to_collection(@fifth_season)
+    @dpl.add_to_collection(@kingdoms)
     @dpl.add_to_collection(@mockingbird)
     assert_equal true, @dpl.include?("To Kill a Mockingbird")
   end
 
   def test_library_can_generate_card_catalogue
-
+    @dpl.add_to_collection(@mockingbird)
+    @dpl.add_to_collection(@fifth_season)
+    @dpl.add_to_collection(@kingdoms)
+    assert_equal [@fifth_season, @kingdoms, @mockingbird],
+                  @dpl.card_catalogue
   end
 end
