@@ -17,4 +17,13 @@ class LibraryTest < Minitest::Test
   def test_library_starts_empty
     assert_equal [], @dpl.books
   end
+
+  def test_library_can_add_to_collection
+    @dpl.add_to_collection(@fifth_season)
+    assert_equal [@fifth_season], @dpl.books
+    @dpl.add_to_collection(@kingdoms)
+    @dpl.add_to_collection(@mockingbird)
+    assert_equal [@fifth_season, @kingdoms, @mockingbird],
+                  @dpl.books
+  end
 end
