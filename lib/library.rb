@@ -1,6 +1,7 @@
 class Library
-  def initialize(argument)
-    @argument = argument
+  attr_reader :books
+  def initialize
+    @books = []
   end
 
 end
